@@ -27,7 +27,8 @@
   [fn-name decorators & defn-stuff]
   `(do
      (defn ~fn-name ~@defn-stuff)
-     (alter-var-root (var ~fn-name) (reduce comp identity (reverse ~decorators)))
+     (alter-var-root (var ~fn-name)
+                     (reduce comp identity (reverse ~decorators)))
      (var ~fn-name)))
 
 

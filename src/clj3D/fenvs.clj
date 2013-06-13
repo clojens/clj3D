@@ -235,14 +235,14 @@
      (do
        (mirror axes cloned)
        cloned)
-     
+
 
      [java.lang.Integer axes]
      (let [av-map (hash-map (dec axes) value)]
        (doto ^Node cloned
 	     (.scale (get av-map 0 1.0) (get av-map 1 1.0) (get av-map 2 1.0))))
 
-    
+
      [clojure.lang.IPersistentCollection axes]
      (let [av-map (reduce into (map hash-map (map dec axes) value))]
        (doto ^Node cloned
@@ -361,7 +361,7 @@
   (let [cone-mesh (Cylinder. z-seg r-seg 0 radius height true false)
          cone (Geometry. "cone" cone-mesh)]
     (mknode
-     (doto ^Geometry (t 3 (/ height 2.0) cone) 
+     (doto ^Geometry (t 3 (/ height 2.0) cone)
 	   (.setMaterial (default-material)))))))
 
 
@@ -499,11 +499,11 @@
    [:1 dim]
    (doto ^Node (struct2 (map #(line %1 %2) (butlast vertices) (next vertices)))
      (.setMaterial (unlit-material)))
-   
+
    [:2 dim]
    (doto ^Node (apply trianglestripe vertices)
      (.setMaterial (default-material)))
-   
+
    [? dim] (throw (IllegalArgumentException. (str "mkpol: " dim " is not a valid dimension.")))))
 
 
